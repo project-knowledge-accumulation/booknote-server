@@ -75,6 +75,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<release>17</release>
 				</configuration>
 			</plugin>
 		</plugins>
