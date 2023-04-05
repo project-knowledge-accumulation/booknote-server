@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>book-note-server</artifactId>
+	<artifactId>booknote-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>book-note-server</name>
 	<description>The back-end server of booknote app.</description>
