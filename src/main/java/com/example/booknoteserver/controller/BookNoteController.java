@@ -3,12 +3,8 @@ package com.example.booknoteserver.controller;
 import com.example.booknoteserver.model.BookInfo;
 import com.example.booknoteserver.model.BookNote;
 import com.example.booknoteserver.repository.BookRepository;
-import com.example.booknoteserver.repository.GraphQLApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@GraphQLApi
-@RequestMapping(value = "/graphql", method = RequestMethod.POST)
+@RequestMapping(value = "/home")
+@CrossOrigin(origins = "*")
 public class BookNoteController{
 
     @Autowired
@@ -59,30 +55,5 @@ public class BookNoteController{
         BookNote savedBookNote = bookRepository.save(existingBook);
 
         return ResponseEntity.ok(savedBookNote);
-    }
-
-    @QueryMapping
-    public List<BookNote> getBooks() {
-        return bookRepository.findAll();
-    }
-
-    @QueryMapping
-    public BookNote getBookById(@Argument("id") String bookId) throws ResourceNotFoundException {
-        return bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResourceNotFoundException("Book not found for this id :: " + bookId));
-    }
-
-    @MutationMapping
-    public BookNote createBook(@Argument("book") BookNote bookNote) {
-        return bookRepository.save(bookNote);
-    }
-
-    @MutationMapping
-    public Boolean deleteBook(@Argument("id") String bookId) throws ResourceNotFoundException {
-        BookNote bookNote = bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResourceNotFoundException("Book not found for this id :: " + bookId));
-
-        bookRepository.delete(bookNote);
-        return true;
     }
 }

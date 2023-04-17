@@ -1,47 +1,47 @@
-
-type BookNote {
-    id: ID!
-    name: String!
-    uId: String!
-    bookInfo: [BookInfo]!
-}
-
-type BookInfo {
-    title: String!
-    noteCollection: [Notes!]!
-}
-
-type Notes {
-    page: Int
-    note: String!
-}
-
-input BookNoteInput {
-    name: String!
-    uId: String!
-    bookInfo: [BookInfoInput!]!
-}
-
-input BookInfoInput {
-    title: String!
-    noteCollection: [NotesInput!]!
-}
-
-
-input NotesInput {
-    page: Int!
-    note: String!
-}
-
-type Query {
-    getBooks: [BookNote!]
-    BookNotes: [BookNote!]!
-    bookNoteById(id: String!): BookNote
-}
-
-type Mutation {
-    createBookNote(bookNote: BookNoteInput!): BookNote!
-    updateBookNoteById(id: String!, bookNote: BookNoteInput!): BookNote!
-    deleteBookNoteById(id: String!): BookNote!
-}
-
+#
+#type BookNote {
+#    id: ID!
+#    name: String!
+#    uId: String!
+#    bookInfo: [BookInfo]!
+#}
+#
+#type BookInfo {
+#    title: String!
+#    noteCollection: [Notes!]!
+#}
+#
+#type Notes {
+#    page: Int
+#    note: String!
+#}
+#
+#input BookNoteInput {
+#    name: String!
+#    uId: String!
+#    bookInfo: [BookInfoInput!]!
+#}
+#
+#input BookInfoInput {
+#    title: String!
+#    noteCollection: [NotesInput!]!
+#}
+#
+#
+#input NotesInput {
+#    page: Int!
+#    note: String!
+#}
+#
+#type Query {
+#    getBooks: [BookNote!]
+#    BookNotes: [BookNote!]!
+#    bookNoteById(id: String!): BookNote
+#}
+#
+#type Mutation {
+#    createBookNote(bookNote: BookNoteInput!): BookNote!
+#    updateBookNoteById(id: String!, bookNote: BookNoteInput!): BookNote!
+#    deleteBookNoteById(id: String!): BookNote!
+#}
+#
